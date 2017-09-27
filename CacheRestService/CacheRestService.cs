@@ -15,7 +15,7 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
     {
         HttpClient client;
 
-        public CacheRestService(string apiUsername, string apiPassword)
+        public CacheRestService(string apiUsername = null, string apiPassword = null)
         {
             client = new HttpClient(new NativeMessageHandler())
             {
