@@ -1,0 +1,15 @@
+C:\Projects\ScopeDesktop\ScopeMobile\Ib.Xamarin.CacheUtils\bin\Release\netstandard1.4\Ib.Xamarin.CacheUtils.deps.json
+C:\Projects\ScopeDesktop\ScopeMobile\Ib.Xamarin.CacheUtils\bin\Release\netstandard1.4\Ib.Xamarin.CacheUtils.dll
+C:\Projects\ScopeDesktop\ScopeMobile\Ib.Xamarin.CacheUtils\bin\Release\netstandard1.4\Ib.Xamarin.CacheUtils.pdb
+C:\Projects\ScopeDesktop\ScopeMobile\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.csproj.CoreCompileInputs.cache
+C:\Projects\ScopeDesktop\ScopeMobile\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.AssemblyInfo.cs
+C:\Projects\ScopeDesktop\ScopeMobile\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.dll
+C:\Projects\ScopeDesktop\ScopeMobile\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.pdb
+D:\VSProjects\Ib.Xamarin.CacheUtils\bin\Release\netstandard1.4\Ib.Xamarin.CacheUtils.deps.json
+D:\VSProjects\Ib.Xamarin.CacheUtils\bin\Release\netstandard1.4\Ib.Xamarin.CacheUtils.dll
+D:\VSProjects\Ib.Xamarin.CacheUtils\bin\Release\netstandard1.4\Ib.Xamarin.CacheUtils.pdb
+D:\VSProjects\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.csprojResolveAssemblyReference.cache
+D:\VSProjects\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.csproj.CoreCompileInputs.cache
+D:\VSProjects\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.AssemblyInfo.cs
+D:\VSProjects\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.dll
+D:\VSProjects\Ib.Xamarin.CacheUtils\obj\Release\netstandard1.4\Ib.Xamarin.CacheUtils.pdb

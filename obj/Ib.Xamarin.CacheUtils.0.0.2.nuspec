@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Ib.Xamarin.CacheUtils</id>
+    <version>0.0.2</version>
+    <authors>jack_tux</authors>
+    <owners>jack_tux</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/jacktux/Xamarin-CacheUtils</projectUrl>
+    <description>Simple Http and Object caching</description>
+    <dependencies>
+      <group targetFramework=".NETStandard1.4">
+        <dependency id="akavache.core" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="akavache" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="akavache.sqlite3" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="modernhttpclient" version="2.4.2" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="10.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\VSProjects\Ib.Xamarin.CacheUtils\bin\Release\netstandard1.4\Ib.Xamarin.CacheUtils.dll" target="lib\netstandard1.4\Ib.Xamarin.CacheUtils.dll" />
+  </files>
+</package>
