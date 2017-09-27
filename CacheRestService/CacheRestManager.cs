@@ -12,7 +12,9 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
 {
     public class CacheRestManager
     {
-        ICacheRestService restService;
+        private ICacheRestService restService;
+        public event CacheEventHandler CacheUpdated;
+        public delegate void CacheEventHandler(object sender, CacheEventArgs e);
 
         public CacheRestManager(ICacheRestService service)
         {
@@ -38,9 +40,16 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
                     TimeSpan elapsed = DateTimeOffset.Now - offset;
                     return elapsed > CacheUtils.CACHE_HOLD_TIME;
                 });
-            cachedPosts.Subscribe(subscribedPosts =>
+
+            bool newResult = false;
+            cachedPosts.Subscribe(subscribedPost =>
             {
-                result = subscribedPosts;
+                if (newResult)
+                {
+                    CacheEventArgs e = new CacheEventArgs(subscribedPost);
+                    OnCacheUpdated(e);
+                }
+                newResult = true;
             });
 
             result = await cachedPosts.FirstOrDefaultAsync();
@@ -54,5 +63,19 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
             return restService.PostDataAsync<T>(item, url);
         }
 
+        protected virtual void OnCacheUpdated(CacheEventArgs e)
+        {
+            CacheUpdated?.Invoke(this, e);
+        }
+    }
+
+    public class CacheEventArgs : EventArgs
+    {
+        public object Results;
+
+        public CacheEventArgs(object results)
+        {
+            Results = results;
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace Ib.Xamarin.CacheUtils
             get
             {
                 if (_cache == null)
-                    throw new TypeInitializationException("CacheNotInitialised", new Exception("Please Initialise CacheUtils before using, ex CacheUtils.Init(<systemPath>)"));
+                    throw new TypeInitializationException("CacheNotInitialised", new Exception("Please Initialise CacheUtils before using, eg CacheUtils.Init(<systemPath>)"));
                 return _cache;
             }
         }
