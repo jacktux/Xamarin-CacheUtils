@@ -13,9 +13,9 @@
     <Company />
     <Authors>jack_tux</Authors>
     <Description>Simple Http and Object caching</Description>
-    <Version>0.0.2</Version>
-    <AssemblyVersion>0.0.2.0</AssemblyVersion>
-    <FileVersion>0.0.2.0</FileVersion>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
     <PackageProjectUrl>https://github.com/jacktux/Xamarin-CacheUtils</PackageProjectUrl>
     <PackageTags>Xamarin Cache</PackageTags>
   </PropertyGroup>

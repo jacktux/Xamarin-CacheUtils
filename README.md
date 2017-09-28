@@ -119,3 +119,6 @@ To Remove from Cache
 ```csharp
 CacheHelper.RemoveCacheObject<UserLogin>();
 ```
+
+#### Upcoming Versions
+**2.0.0** => Ability to Set Different CACHE_HOLD_TIME per DTO            
