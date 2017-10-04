@@ -60,12 +60,19 @@ Set the *PropertyName* to match your json.
 
 **Example Usage**
 ```csharp
-var result = await restManager.GetRestDataAsync<UserDTO>(url);
+var result = await restManager.GetRestDataAsync<UserDTO>(url, forceRefresh);
 ```
-or, if many UserDTO are returned
+***Where***  
+**url** (string) is the REST endpoint  
+**forceRefresh** (bool) true to get latest data, false to read from cache and update if CACHE_HOLD_TIME as expired.  
+
+or, supply a Tag to know which cache has been updated
 ```csharp
-var result = await restManager.GetRestDataAsync<List<UserDTO>>(url);
+var result = await restManager.GetRestDataAsync<UserDTO>(url, eventListenerTag);
 ```
+***Where***  
+**url** (string) is the REST endpoint  
+**eventListenerTag** (string) A string to Tag for cache event.  
 
 ### Cache Updated - Event Handler
 When using *GetRestDataAsync()* you will get the last object from the cache (if exists), but if the **CACHE_HOLD_TIME** has expired then *GetRestDataAsync()* will get a new update for the data and insert it into the cache ready for the next call to *GetRestDataAsync()*.
@@ -78,11 +85,22 @@ Sometimes you might want to get the lastest as soon as the cache is updated, to 
 restManager.CacheUpdated += MyCacheUpdated;
 ...
 
+// if using restManager.GetRestDataAsync<UserDTO>(url, false)
+// Event will only get called if forceRefresh = false
 private void MyCacheUpdated(object sender, CacheEventArgs e)
 {
-    if (e.Results.GetType() == typeof(List<UserDTO>))
+    if (e.Results.GetType() == typeof(UserDTO))
     {
-        Users = (List<UserDTO>)e.Results;
+        Users = (UserDTO)e.Results;
+    }
+}
+
+// or if restManager.GetRestDataAsync<UserDTO>(url, "login")
+private void MyCacheUpdated(object sender, CacheEventArgs e)
+{
+    if (e.EventListenerTag == "login")
+    {
+        Users = (UserDTO)e.Results;
     }
 }
 
@@ -119,6 +137,11 @@ To Remove from Cache
 ```csharp
 CacheHelper.RemoveCacheObject<UserLogin>();
 ```
+
+#### Thanks
+Akavache => https://github.com/akavache/Akavache  
+ModernHttpClient => https://github.com/paulcbetts/ModernHttpClient  
+Newtonsoft Json => https://www.newtonsoft.com/json  
 
 #### Upcoming Versions
 **2.0.0** => Ability to Set Different CACHE_HOLD_TIME per DTO            
