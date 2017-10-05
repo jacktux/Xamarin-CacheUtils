@@ -1,10 +1,15 @@
 ﻿using Akavache;
+using Ib.Xamarin.CacheUtils.CacheRestService.RestServiceAttribute;
+using Ib.Xamarin.CacheUtils.RestServiceAttribute.CacheRestService;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,22 +28,12 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
 
         public virtual async Task<T> GetRestDataAsync<T>(string url, string eventListenerTag)
         {
-            return await _GetRestDataAsync<T>(url, false, eventListenerTag); 
+            return await _GetRestDataAsync<T>(url, false, eventListenerTag);
         }
 
         public virtual async Task<T> GetRestDataAsync<T>(string url, bool forceRefresh = false)
         {
             return await _GetRestDataAsync<T>(url, false, null);
-        }
-
-        public IObservable<T> GetPosts<T>(string url)
-        {
-            return CacheUtils.Cache.GetAndFetchLatest(url, () => restService.GetDataAsync<T>(url),
-                offset =>
-                {
-                    TimeSpan elapsed = DateTimeOffset.Now - offset;
-                    return elapsed > CacheUtils.CACHE_HOLD_TIME;
-                });
         }
 
         private async Task<T> _GetRestDataAsync<T>(string url, bool forceRefresh = false, string tag = null)
@@ -54,11 +49,13 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
                 return result;
             }
 
+            TimeSpan attribCacheHoldTime = typeof(T).GetAttributeValue((CacheDtoHoldTimeAttribute a) => a.CacheHoldTime);
+
             var cachedPosts = CacheUtils.Cache.GetAndFetchLatest(url, () => restService.GetDataAsync<T>(url),
                 offset =>
                 {
                     TimeSpan elapsed = DateTimeOffset.Now - offset;
-                    return elapsed > CacheUtils.CACHE_HOLD_TIME;
+                    return elapsed > (attribCacheHoldTime == default(TimeSpan) ? CacheUtils.CACHE_HOLD_TIME : attribCacheHoldTime);
                 });
 
             bool newResult = false;
@@ -101,4 +98,5 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
             Results = results;
         }
     }
+
 }
