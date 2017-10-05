@@ -9,9 +9,9 @@ using System.Text;
 /// </summary>
 namespace Ib.Xamarin.CacheUtils.CacheRestService.RestServiceAttribute
 {
-    public static class AttributeExtensions
+    internal static class AttributeExtensions
     {
-        public static TValue GetAttributeValue<TAttribute, TValue>(this Type type, Func<TAttribute, TValue> valueSelector) where TAttribute : Attribute
+        internal static TValue GetAttributeValue<TAttribute, TValue>(this Type type, Func<TAttribute, TValue> valueSelector) where TAttribute : Attribute
         {
             Type gta = type.GenericTypeArguments.FirstOrDefault();
 
