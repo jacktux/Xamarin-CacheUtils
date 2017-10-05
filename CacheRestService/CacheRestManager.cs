@@ -23,7 +23,7 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
 
         public virtual async Task<T> GetRestDataAsync<T>(string url, string eventListenerTag)
         {
-            return await _GetRestDataAsync<T>(url, false, eventListenerTag);
+            return await _GetRestDataAsync<T>(url, false, eventListenerTag); 
         }
 
         public virtual async Task<T> GetRestDataAsync<T>(string url, bool forceRefresh = false)
