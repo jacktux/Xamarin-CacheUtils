@@ -11,7 +11,8 @@ namespace Ib.Xamarin.CacheUtils
         private static IBlobCache _cache;
 
         public static TimeSpan CACHE_HOLD_TIME = new TimeSpan(hours: 0, minutes: 10, seconds: 0);
-        public static long MAX_RESPONSE_CONTENT_BUFFER_SIZE = 1024000;
+        public static long MAX_RESPONSE_CONTENT_BUFFER_SIZE = 256000;
+        public static TimeSpan TIMEOUT = new TimeSpan(hours: 0, minutes: 1, seconds: 30);
 
         public static void Init(string systemPath)
         {
@@ -28,5 +29,6 @@ namespace Ib.Xamarin.CacheUtils
                 return _cache;
             }
         }
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using ModernHttpClient;
+﻿using Ib.Xamarin.CacheUtils.CacheRestService.RestServiceAttribute;
+using ModernHttpClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,7 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
 
         public CacheRestService(string apiUsername = null, string apiPassword = null)
         {
-            client = new HttpClient(new NativeMessageHandler())
-            {
-                MaxResponseContentBufferSize = CacheUtils.MAX_RESPONSE_CONTENT_BUFFER_SIZE
-            };
+            client = new HttpClient(new NativeMessageHandler());
 
             if (apiUsername != null)
             {
@@ -28,6 +26,8 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
                 var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
             }
+
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public void Dispose()
@@ -43,6 +43,8 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
 
             try
             {
+                client.MaxResponseContentBufferSize = typeof(T).GetDtoMaxBufferSizeOrDefault();
+                client.Timeout = typeof(T).GetDtoTimeoutOrDefault();
                 var response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
@@ -53,6 +55,7 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
             catch (Exception ex)
             {
                 Debug.WriteLine(@"ERROR {0}", ex.Message);
+                throw new Exception(ex.Message, ex);
             }
 
             return items;
@@ -77,6 +80,7 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
             catch (Exception ex)
             {
                 Debug.WriteLine(@"ERROR {0}", ex.Message);
+                throw new Exception(ex.Message, ex);
             }
 
             return default(T);
