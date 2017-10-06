@@ -28,7 +28,7 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
 
         public virtual async Task<T> GetRestDataAsync<T>(string url, bool forceRefresh = false)
         {
-            return await _GetRestDataAsync<T>(url, false, null);
+            return await _GetRestDataAsync<T>(url, forceRefresh, null);
         }
 
         public IObservable<T> GetPosts<T>(string url)

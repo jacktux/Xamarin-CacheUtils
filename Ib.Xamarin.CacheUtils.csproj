@@ -13,7 +13,7 @@
     <Company>jacktux</Company>
     <Authors>jacktux</Authors>
     <Description>Simple Http and Object caching</Description>
-    <Version>1.0.0</Version>
+    <Version>1.1.1</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <PackageProjectUrl>https://github.com/jacktux/Xamarin-CacheUtils</PackageProjectUrl>
