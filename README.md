@@ -18,9 +18,9 @@ The amount of time to hold the results before getting new data. **Default**: *10
 CacheUtils.CACHE_HOLD_TIME = new TimeSpan(0,10,0);
 ```
 #### Max Response Content Buffer Size (long)
-The maximum size for the response buffer. **Default**: *1024000*
+The maximum size for the response buffer. **Default**: *256000*
 ```csharp
-CacheUtils.MAX_RESPONSE_CONTENT_BUFFER_SIZE = 1024000;
+CacheUtils.MAX_RESPONSE_CONTENT_BUFFER_SIZE = 256000;
 ```
 #### HTTP Client Request Timeout (TimeSpan)
 The amount of time to hold the results before getting new data. **Default**: *1 minute 30 seconds*
