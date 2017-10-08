@@ -22,6 +22,37 @@ The maximum size for the response buffer. **Default**: *1024000*
 ```csharp
 CacheUtils.MAX_RESPONSE_CONTENT_BUFFER_SIZE = 1024000;
 ```
+#### HTTP Client Request Timeout (TimeSpan)
+The amount of time to hold the results before getting new data. **Default**: *1 minute 30 seconds*
+```csharp
+CacheUtils.TIMEOUT = new TimeSpan(0,1,30);
+```
+
+## Override Globals per DTO
+Each global variable can be overwritten by using ***Attributes*** per DTO.
+#### Cache Hold Time (int, int, int)
+```csharp
+[CacheDtoHoldTime(<hours>,<minutes>,<seconds>)]
+```
+#### HTTP Client Max Buffer Size (long)
+```csharp
+[CacheUtilsHttpClient(MaxBufferSize = <buffer size>)]
+```
+#### HTTP Client Request Timeout (long)
+```csharp
+[CacheUtilsHttpClient(Timeout = <seconds>)]
+```
+**Example Usage**
+```csharp
+[CacheDtoHoldTime(0,1,0)]
+[CacheUtilsHttpClient(MaxBufferSize = 1024000, Timeout = 300)]
+public class UserDTO
+{
+    public UserDTO() { }
+
+    ...   
+}
+```
 
 ## HttpRest Caching (json)
 In your Shared project initialize the CacheRestManager
@@ -64,7 +95,7 @@ var result = await restManager.GetRestDataAsync<UserDTO>(url, forceRefresh);
 ```
 ***Where***  
 **url** (string) is the REST endpoint  
-**forceRefresh** (bool) true to get latest data, false to read from cache and update if CACHE_HOLD_TIME as expired.  
+**forceRefresh** (bool) true to get latest data, false to read from cache and update if CACHE_HOLD_TIME has expired.  
 
 or, supply a Tag to know which cache has been updated
 ```csharp
@@ -138,10 +169,9 @@ To Remove from Cache
 CacheHelper.RemoveCacheObject<UserLogin>();
 ```
 
-#### Thanks
+#### Many Thanks
 Akavache => https://github.com/akavache/Akavache  
 ModernHttpClient => https://github.com/paulcbetts/ModernHttpClient  
-Newtonsoft Json => https://www.newtonsoft.com/json  
-
-#### Upcoming Versions
-**2.0.0** => Ability to Set Different CACHE_HOLD_TIME per DTO            
+Newtonsoft Json => https://www.newtonsoft.com/json    
+ConnectivityPlugin => https://github.com/jamesmontemagno/ConnectivityPlugin
+         
