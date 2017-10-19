@@ -104,8 +104,8 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
         /// <summary>
         /// To POST your object to the url Endpoint
         /// </summary>
-        /// <typeparam name="T">DTO object</typeparam>
-        /// <param name="item">Object of type T</param>
+        /// <typeparam name="T">return of type T</typeparam>
+        /// <param name="item">Object to save</param>
         /// <param name="url">REST Endpoint</param>
         /// <returns></returns>
         public virtual Task<T> PostRestDataAsync<T>(object item, string url)
