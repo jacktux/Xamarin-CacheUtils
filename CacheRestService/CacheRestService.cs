@@ -1,5 +1,5 @@
 ﻿using Ib.Xamarin.CacheUtils.CacheRestService.RestServiceAttribute;
-using ModernHttpClient;
+//using ModernHttpClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace Ib.Xamarin.CacheUtils.CacheRestService
 
         public CacheRestService(string apiUsername = null, string apiPassword = null)
         {
-            client = new HttpClient(new NativeMessageHandler());
+            client = new HttpClient(); //new NativeMessageHandler()
 
             if (apiUsername != null)
             {
