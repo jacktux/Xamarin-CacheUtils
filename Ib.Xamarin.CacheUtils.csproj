@@ -13,19 +13,20 @@
     <Company>jacktux</Company>
     <Authors>jacktux</Authors>
     <Description>Simple Http and Object caching</Description>
-    <Version>2.1.0-rc1</Version>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <FileVersion>2.1.0.0</FileVersion>
+    <Version>2.2.0</Version>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
+    <FileVersion>2.2.0.0</FileVersion>
     <PackageProjectUrl>https://github.com/jacktux/Xamarin-CacheUtils</PackageProjectUrl>
     <PackageTags>xamarin-forms cache caching xamarin http restful rest json object</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="akavache" Version="6.0.0-alpha0038" />
-    <PackageReference Include="akavache.core" Version="6.0.0-alpha0038" />
-    <PackageReference Include="akavache.sqlite3" Version="6.0.0-alpha0038" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.0.3" />
+    <PackageReference Include="akavache" Version="6.5.1" />
+    <PackageReference Include="akavache.core" Version="6.5.1" />
+    <PackageReference Include="akavache.sqlite3" Version="6.5.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
   </ItemGroup>
 
   <ItemGroup>
